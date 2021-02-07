@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson5 条件渲染</title>
+    <script src='https://unpkg.com/vue@next'></script>
+</head>
+
+<div id='root'></div>
+
+<body>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                show:true,
+                conditonOne:false,
+                conditonTwo:true,
+            }
+        },
+        template:
+        //直接销毁
+        //  '<div v-if="show">helloworld</div>'
+        //仅是隐藏
+        //  '<div v-show="show">Bye word</div>'
+        //else-if if-else
+         '<div v-else>else</div>'
+    });
+    //子组件
+    app.component('demo',{
+        template:'<div>single</div>'
+    })
+    const vm = app.mount('#root')
+</script>
+
+</html>

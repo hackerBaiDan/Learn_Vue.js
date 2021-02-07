@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson3 常用模板语法</title>
+    <script src='https://unpkg.com/vue@next'></script>
+</head>
+
+<div id='root'></div>
+
+<body>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                message:'<strong>hello world</strong>',
+                disable:false,
+                show:true,
+                name:'title',
+                event:'click'
+            }
+        },
+        methods:{
+            handleClick(){
+                alter('click')
+            }
+        },
+        //运用html标签
+        //template:'<div v-html="message"></div>'
+        //绑定属性
+        //template:'<input v-bind:disabled="disable"/>'
+        //表达式
+        //template:'<div>{{Math.max(1,2)}}</div>'
+        //if判断
+        //template:'<div v-if="show">{{message}}</div>'
+        //简写 v-on → @  v-bind → ： 动态属性[]
+        //template:'<div @[event]="handleClick" :[name]="message">{{message}}</div>'
+        //表单
+        template:
+            '<form action="https://www.baidu.com"><button type="submit"> 提交 </button></form>'
+    });
+    const vm = app.mount('#root')
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson4 数据、方法、计算属性和侦听器</title>
+    <script src='https://unpkg.com/vue@next'></script>
+</head>
+
+<div id='root'></div>
+
+<body>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                message:' hello world',
+                count:2,
+                price:5,
+                newTotal:10,
+            }
+        },
+        //computed 和method都能实现 建议使用computed因为具备缓存
+        //computed和watch都能实现 建议使用computed因为更简单
+        wathc:{
+            price(current,prev){
+                this.newTotal =current * this.count;
+                //setTimeout()=>{
+                //    console.log('price changed')
+                //},3000)
+            }
+        },
+        computed:{
+            //计算属性依赖内容发生变化才重新计算
+            total(){
+                return this.count * this.price
+            }
+        },
+        methods:{
+            //只要页面重新渲染就重新计算
+            getTotal(){
+                return this.count * this.price
+            }
+        },
+        template:
+          '<div>{{total}}</div>'
+    });
+    const vm = app.mount('#root')
+</script>
+
+</html>

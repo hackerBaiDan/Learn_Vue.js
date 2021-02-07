@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson2 生命周期函数</title>
+    <script src='https://unpkg.com/vue@next'></script>
+</head>
+
+<div id='root'></div>
+
+<body>
+</body>
+<script>
+    //生命周期函数：某一时刻自动执行的函数
+    const app = Vue.createApp({
+        data(){
+            return{
+                message:'helloworld'
+            }
+        },
+    //手动执行  
+    /*    methods:{
+            handleItemClick(){
+                alert('click')
+            }
+        },
+    */
+   //自动执行
+   /*
+        mounted(){
+            alert('mounted')
+        },
+    */
+    //某一时刻 分几段 由先到后排列
+        beforeCreate(){
+            console.log('第一beforeCreate 实例生成前')
+        },
+        created(){
+            console.log("第二created 实例生成后")
+        },
+        beforeMount(){
+            console.log(document.getElementById('root').innerHTML,'当实例中有template且被编译成函数')
+        },
+        mounted(){
+            console.log(document.getElementById('root').innerHTML,'第四mounted template被渲染到页面')
+        },
+        beforeUpdate(){
+            console.log('第五beforeUpdate 数据发生变化前')
+        },
+        Updated(){
+            console.log('第六Updated 数据发生变化和页面发生更新后')
+        },
+        beforeUnmount(){
+            console.log("第七BeforeUnmount 当Vue应用失效时")
+        }, 
+        unmounted(){
+            console.log("第八unmounted 当Vue应用失效后且dom完全销毁")
+        },
+        template:"<div v-on:click='handleItemClick'>{{message}}</div>"
+    });
+    const vm = app.mount('#root')
+</script>
+
+</html>

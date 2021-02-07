@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson6 列表循环渲染</title>
+    <script src='https://unpkg.com/vue@next'></script>
+</head>
+
+<div id='root'></div>
+
+<body>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                listArray:['dell','lee','teacher'],
+                listObject:{
+                    firstName:'dell',
+                    lastName:'lee',
+                    job:'teacher',
+                }
+            }
+        },
+        methods:{
+            handleAddBtnClick(){
+                //1.数组变更函数 pop push shift unshift
+                this.listArray.push('hello')
+
+                //2.直接替换数组
+                //this.listArray['bye']
+                
+                //3.直接改数组内容
+                //this.listArray[1]="hello"
+
+            }
+        },
+        template:`
+        <div>
+            <div v-for="(item,index) in listArray" :key="index">
+                {{item}}--{{index}}
+            </div>
+            <button @click="handleAddBtnClick">新增</button>
+        </div>
+        `
+    });
+    const vm = app.mount('#root')
+</script>
+
+</html>
